@@ -36,6 +36,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\animal.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\contract.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\infrastructure.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\inspection.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\locality.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\organization.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\pricePair.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\role.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\user.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\vaccination.proto" GrpcServices="Client" />
     <Reference Include="Google.Protobuf, Version=3.25.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.25.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -84,7 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientFacade.cs" />
-    <Compile Include="ContractClient.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

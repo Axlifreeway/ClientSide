@@ -12,6 +12,8 @@ namespace ClietnSide
 {
     public partial class MainForm : Form
     {
+        private ClientFacade clientFacade;
+
         public MainForm()
         {
             InitializeComponent();
@@ -22,6 +24,7 @@ namespace ClietnSide
             вакцинацииToolStripMenuItem.Visible = false;
             осмотрыToolStripMenuItem.Visible = false;
             отчётОToolStripMenuItem.Visible = false;
+            //ClientFacade client = new ClientFacade();
         }
 
         public void Authorize(object sender, EventArgs e)
@@ -103,51 +106,67 @@ namespace ClietnSide
         public void ClickButtonAddVaccination(object sender, EventArgs e)
         {
             MessageBox.Show("Не реализовано... реализовать...");
+            //clientFacade.AddVaccination(new AnimalHealth.Application.Models.VaccinationAddModel());
         }
 
         public void ClickButtonRemoveVaccination(object sender, EventArgs e)
         {
             MessageBox.Show("Не реализовано");
+            //clientFacade.DeleteVaccination(new AnimalHealth.Application.Models.VaccinationLookout());
         }
 
         public void ClickButtonEditVaccination(object sender, EventArgs e)
         {
             MessageBox.Show("Не реализовано");
+            //clientFacade.EditVaccination(new AnimalHealth.Application.Models.VaccinationModel());
         }
 
         public bool isCorrectVaccination(string Vaccination)
         {
             return true;
+            /*
+             *  if
+             *  else
+             */
         }
 
         public void ClickButtonGetVacciantions(object sender, EventArgs e)
         {
             MessageBox.Show("Не реализовано");
+            //var vaccinations = clientFacade.GetVaccinations(new Google.Protobuf.WellKnownTypes.Empty());
         }
 
         public void ClickButtonAddInspection(object sender, EventArgs e)
         {
             MessageBox.Show("Не реализовано.... реализовать....");
+            //clientFacade.AddInspection(new AnimalHealth.Application.Models.InspectionAddModel());
         }
 
         public void ClickButtonRemoveInspection(object sender, EventArgs e)
         {
             MessageBox.Show("Не реализовано");
+            //clientFacade.DeleteInspection(new AnimalHealth.Application.Models.InspectionLookout());
         }
 
         public void ClickButtonEditInspection(object sender, EventArgs e)
         {
             MessageBox.Show("Не реализовано");
+            //clientFacade.EditInspection(new AnimalHealth.Application.Models.InspectionAddModel());
         }
 
         public bool isCorrectInspection(string Inspection)
         {
             return true;
+            /*
+             *  if
+             *  else
+             */
         }
 
         public void ClickButtonGetInspections(object sender, EventArgs e)
         {
             MessageBox.Show("Не реализовано");
+            //var inspections = clientFacade.GetInspections(new Google.Protobuf.WellKnownTypes.Empty());
         }
 
         public void ClickButtonShowOrganisation(object sender, EventArgs e)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AnimalHealth.Application.Models;
+using Grpc.Net.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,84 +10,94 @@ namespace ClietnSide
 {
     public class ClientFacade
     {
-        public void AddContract(string contractModel)
+        private InspectionProto.InspectionProtoClient InspectionClient { get; set; }
+        private VaccinationProto.VaccinationProtoClient VaccinationClient { get; set; }
+
+        public ClientFacade() 
+        {
+            var channel = GrpcChannel.ForAddress("aue.com");
+            InspectionClient = new InspectionProto.InspectionProtoClient(channel);
+            VaccinationClient = new VaccinationProto.VaccinationProtoClient(channel);
+        }
+
+        public void AddContract(ContractModel model)
+        {
+            
+        }
+
+        public void DeleteContract(ContractModel model)
         {
 
         }
 
-        public void DeleteContract(string contractDeleteModel)
+        public void EditContract(ContractModel model)
         {
 
         }
 
-        public void EditContract(string contractModel)
-        {
-
-        }
-
-        public List<string> GetContracts(string[] filter)
+        public List<string> GetContracts(Google.Protobuf.WellKnownTypes.Empty request)
         {
             return null;
         }
 
-        public void AddOrganisation(string organisationModel)
+        public void AddOrganisation(OrganizationModel model)
         {
 
         }
 
-        public void DeleteOrganisation(string organisationDeleteModel)
+        public void DeleteOrganisation(OrganizationModel model)
         {
 
         }
 
-        public void EditOrganisation(string organisationModel)
+        public void EditOrganisation(OrganizationModel model)
         {
 
         }
 
-        public List<string> GetOrganisation(string[] filter)
+        public List<string> GetOrganisations(Google.Protobuf.WellKnownTypes.Empty request)
         {
             return null;
         }
 
-        public void AddVaccination(string vaccinationModel)
+        public void AddVaccination(VaccinationAddModel model)
         {
-
+            VaccinationClient.AddVaccination(model);
         }
 
-        public void DeleteVaccination(string vaccinationDeleteModel)
+        public void DeleteVaccination(VaccinationLookup model)
         {
-
+            VaccinationClient.DeleteInspection(model);
         }
 
-        public void EditVaccination(string vaccinationModel)
+        public void EditVaccination(VaccineModel model)
         {
-
+            VaccinationClient.UpdateVaccination(model);
         }
 
-        public List<string> GetVaccination(string[] filter)
+        public VaccinationModelList GetVaccinations(Google.Protobuf.WellKnownTypes.Empty request)
         {
-            return null;
+            return VaccinationClient.GetInspections(request);
         }
 
-        public void AddInspection(string inspectionModel)
+        public void AddInspection(InspectionAddModel model)
         {
-
+            InspectionClient.AddInspection(model);
         }
 
-        public void DeleteInspection(string inspectionDeleteModel)
+        public void DeleteInspection(InspectionLookup model)
         {
-
+            InspectionClient.DeleteInspection(model);
         }
 
-        public void EditInspection(string inspectionModel)
+        public void EditInspection(InspectionModel model)
         {
-
+            InspectionClient.UpdateInspection(model);
         }
 
-        public List<string> GetInspection(string[] filter)
+        public InspectionModelList GetInspections(Google.Protobuf.WellKnownTypes.Empty request)
         {
-            return null;
+            return InspectionClient.GetInspections(request);
         }
     }
 }
