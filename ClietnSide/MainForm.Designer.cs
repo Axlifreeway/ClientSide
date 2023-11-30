@@ -31,11 +31,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.контрактыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.организацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отчётыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вакцинацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.осмотрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчётОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отчётПоВакцинациямToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отчётПоОсмотрамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.ContractAdd = new System.Windows.Forms.Button();
             this.ContractRemove = new System.Windows.Forms.Button();
@@ -53,6 +51,12 @@
             this.InspectionRemove = new System.Windows.Forms.Button();
             this.InspectionEdit = new System.Windows.Forms.Button();
             this.InspectionsGet = new System.Windows.Forms.Button();
+            this.labelLogin = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.textLogin = new System.Windows.Forms.TextBox();
+            this.textPassword = new System.Windows.Forms.TextBox();
+            this.buttonAuth = new System.Windows.Forms.Button();
+            this.labelAuth = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
@@ -62,11 +66,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.контрактыToolStripMenuItem,
             this.организацииToolStripMenuItem,
-            this.отчётыToolStripMenuItem,
+            this.вакцинацииToolStripMenuItem,
             this.осмотрыToolStripMenuItem,
-            this.отчётОToolStripMenuItem,
-            this.отчётПоВакцинациямToolStripMenuItem,
-            this.отчётПоОсмотрамToolStripMenuItem});
+            this.отчётОToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -87,12 +89,12 @@
             this.организацииToolStripMenuItem.Text = "Организации";
             this.организацииToolStripMenuItem.Click += new System.EventHandler(this.ClickOrganisationShow);
             // 
-            // отчётыToolStripMenuItem
+            // вакцинацииToolStripMenuItem
             // 
-            this.отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
-            this.отчётыToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
-            this.отчётыToolStripMenuItem.Text = "Вакцинации";
-            this.отчётыToolStripMenuItem.Click += new System.EventHandler(this.ClickVaccinationShow);
+            this.вакцинацииToolStripMenuItem.Name = "вакцинацииToolStripMenuItem";
+            this.вакцинацииToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.вакцинацииToolStripMenuItem.Text = "Вакцинации";
+            this.вакцинацииToolStripMenuItem.Click += new System.EventHandler(this.ClickVaccinationShow);
             // 
             // осмотрыToolStripMenuItem
             // 
@@ -104,20 +106,9 @@
             // отчётОToolStripMenuItem
             // 
             this.отчётОToolStripMenuItem.Name = "отчётОToolStripMenuItem";
-            this.отчётОToolStripMenuItem.Size = new System.Drawing.Size(148, 20);
-            this.отчётОToolStripMenuItem.Text = "Отчёт о типе животных";
-            // 
-            // отчётПоВакцинациямToolStripMenuItem
-            // 
-            this.отчётПоВакцинациямToolStripMenuItem.Name = "отчётПоВакцинациямToolStripMenuItem";
-            this.отчётПоВакцинациямToolStripMenuItem.Size = new System.Drawing.Size(145, 20);
-            this.отчётПоВакцинациямToolStripMenuItem.Text = "Отчёт по вакцинациям";
-            // 
-            // отчётПоОсмотрамToolStripMenuItem
-            // 
-            this.отчётПоОсмотрамToolStripMenuItem.Name = "отчётПоОсмотрамToolStripMenuItem";
-            this.отчётПоОсмотрамToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
-            this.отчётПоОсмотрамToolStripMenuItem.Text = "Отчёт по болезням";
+            this.отчётОToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.отчётОToolStripMenuItem.Text = "Отчёты";
+            this.отчётОToolStripMenuItem.Click += new System.EventHandler(this.отчётОToolStripMenuItem_Click);
             // 
             // dataGrid
             // 
@@ -307,11 +298,69 @@
             this.InspectionsGet.Visible = false;
             this.InspectionsGet.Click += new System.EventHandler(this.ClickButtonGetInspections);
             // 
+            // labelLogin
+            // 
+            this.labelLogin.AutoSize = true;
+            this.labelLogin.Location = new System.Drawing.Point(31, 64);
+            this.labelLogin.Name = "labelLogin";
+            this.labelLogin.Size = new System.Drawing.Size(41, 13);
+            this.labelLogin.TabIndex = 18;
+            this.labelLogin.Text = "Логин:";
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Location = new System.Drawing.Point(31, 87);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(48, 13);
+            this.labelPassword.TabIndex = 19;
+            this.labelPassword.Text = "Пароль:";
+            // 
+            // textLogin
+            // 
+            this.textLogin.Location = new System.Drawing.Point(84, 61);
+            this.textLogin.Name = "textLogin";
+            this.textLogin.Size = new System.Drawing.Size(100, 20);
+            this.textLogin.TabIndex = 20;
+            // 
+            // textPassword
+            // 
+            this.textPassword.Location = new System.Drawing.Point(84, 84);
+            this.textPassword.Name = "textPassword";
+            this.textPassword.Size = new System.Drawing.Size(100, 20);
+            this.textPassword.TabIndex = 21;
+            // 
+            // buttonAuth
+            // 
+            this.buttonAuth.Location = new System.Drawing.Point(34, 110);
+            this.buttonAuth.Name = "buttonAuth";
+            this.buttonAuth.Size = new System.Drawing.Size(141, 23);
+            this.buttonAuth.TabIndex = 22;
+            this.buttonAuth.Text = "Войти";
+            this.buttonAuth.UseVisualStyleBackColor = true;
+            this.buttonAuth.Click += new System.EventHandler(this.Authorize);
+            // 
+            // labelAuth
+            // 
+            this.labelAuth.AutoSize = true;
+            this.labelAuth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAuth.Location = new System.Drawing.Point(46, 24);
+            this.labelAuth.Name = "labelAuth";
+            this.labelAuth.Size = new System.Drawing.Size(129, 24);
+            this.labelAuth.TabIndex = 23;
+            this.labelAuth.Text = "Авторизация";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelAuth);
+            this.Controls.Add(this.buttonAuth);
+            this.Controls.Add(this.textPassword);
+            this.Controls.Add(this.textLogin);
+            this.Controls.Add(this.labelPassword);
+            this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.InspectionsGet);
             this.Controls.Add(this.InspectionEdit);
             this.Controls.Add(this.InspectionRemove);
@@ -346,11 +395,9 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem контрактыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem организацииToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem отчётыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вакцинацииToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem осмотрыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отчётОToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem отчётПоВакцинациямToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem отчётПоОсмотрамToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGrid;
         private System.Windows.Forms.Button ContractAdd;
         private System.Windows.Forms.Button ContractRemove;
@@ -368,6 +415,12 @@
         private System.Windows.Forms.Button InspectionRemove;
         private System.Windows.Forms.Button InspectionEdit;
         private System.Windows.Forms.Button InspectionsGet;
+        private System.Windows.Forms.Label labelLogin;
+        private System.Windows.Forms.Label labelPassword;
+        private System.Windows.Forms.TextBox textLogin;
+        private System.Windows.Forms.TextBox textPassword;
+        private System.Windows.Forms.Button buttonAuth;
+        private System.Windows.Forms.Label labelAuth;
     }
 }
 

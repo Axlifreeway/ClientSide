@@ -15,6 +15,38 @@ namespace ClietnSide
         public MainForm()
         {
             InitializeComponent();
+            Text = "Авторизация";
+            Size = new System.Drawing.Size(250, 200);
+            контрактыToolStripMenuItem.Visible = false;
+            организацииToolStripMenuItem.Visible = false;
+            вакцинацииToolStripMenuItem.Visible = false;
+            осмотрыToolStripMenuItem.Visible = false;
+            отчётОToolStripMenuItem.Visible = false;
+        }
+
+        public void Authorize(object sender, EventArgs e)
+        {
+            if (textLogin.Text != "" && textPassword.Text != "")
+            {
+                MessageBox.Show("Вход в систему");
+                Text = "Главная форма";
+                Size = new System.Drawing.Size(816, 489);
+                labelAuth.Visible = false;
+                labelLogin.Visible = false;
+                labelPassword.Visible = false;
+                textLogin.Visible = false;
+                textPassword.Visible = false;
+                buttonAuth.Visible = false;
+                контрактыToolStripMenuItem.Visible = true;
+                организацииToolStripMenuItem.Visible = true;
+                вакцинацииToolStripMenuItem.Visible = true;
+                осмотрыToolStripMenuItem.Visible = true;
+                отчётОToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Не верный логин или пароль!");
+            }
         }
 
         public void ClickButtonAddOrganisation(object sender, EventArgs e)
@@ -141,6 +173,7 @@ namespace ClietnSide
         private void ClickContractsShow(object sender, EventArgs e)
         {
             HideAll();
+            Text = "Контракты";
             ContractAdd.Visible = true;
             ContractRemove.Visible = true;
             ContractEdit.Visible = true;
@@ -151,6 +184,7 @@ namespace ClietnSide
         private void ClickOrganisationShow(object sender, EventArgs e)
         {
             HideAll();
+            Text = "Организации";
             OrganisationAdd.Visible = true;
             OrganisationRemove.Visible = true;
             OrganisationEdit.Visible = true;
@@ -161,6 +195,7 @@ namespace ClietnSide
         private void ClickVaccinationShow(object sender, EventArgs e)
         {
             HideAll();
+            Text = "Вакцинации";
             VaccinationAdd.Visible = true;
             VaccinationRemove.Visible = true;
             VaccinationEdit.Visible = true;
@@ -171,6 +206,7 @@ namespace ClietnSide
         private void ClickInspectionShow(object sender, EventArgs e)
         {
             HideAll();
+            Text = "Осмотры";
             InspectionAdd.Visible = true;
             InspectionRemove.Visible = true;
             InspectionEdit.Visible = true;
@@ -197,6 +233,12 @@ namespace ClietnSide
             InspectionRemove.Visible = false;
             InspectionEdit.Visible = false;
             InspectionsGet.Visible = false;
+        }
+
+        private void отчётОToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var reports = new ReportForm();
+            reports.ShowDialog();
         }
     }
 }
